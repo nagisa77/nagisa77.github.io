@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>关于图床 | Tim&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="什么是图床？ 图床（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。
+什么情况需要用图床？ 图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。
+我自己的案例 我搭建了一个博客 http://nagisa77.github.io/ ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。
+此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。
+腾讯云 COS 图片的上传和下载 上传
+对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。
+下载
+下载只要用访问域名&#43;文件后缀即可直接下载。
+把图片链接弄在Markdown中直接部署。
+这样就可以实现托管在GithubIO的博客秒开啦～
+图床的工具 uPic uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。
+图床的思考 本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。
+让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。
+程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？">
+<meta name="author" content="">
+<link rel="canonical" href="/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="关于图床" />
+<meta property="og:description" content="什么是图床？ 图床（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。
+什么情况需要用图床？ 图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。
+我自己的案例 我搭建了一个博客 http://nagisa77.github.io/ ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。
+此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。
+腾讯云 COS 图片的上传和下载 上传
+对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。
+下载
+下载只要用访问域名&#43;文件后缀即可直接下载。
+把图片链接弄在Markdown中直接部署。
+这样就可以实现托管在GithubIO的博客秒开啦～
+图床的工具 uPic uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。
+图床的思考 本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。
+让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。
+程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-29T22:07:12+08:00" />
+<meta property="article:modified_time" content="2024-08-29T22:07:12+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="关于图床"/>
+<meta name="twitter:description" content="什么是图床？ 图床（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。
+什么情况需要用图床？ 图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。
+我自己的案例 我搭建了一个博客 http://nagisa77.github.io/ ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。
+此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。
+腾讯云 COS 图片的上传和下载 上传
+对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。
+下载
+下载只要用访问域名&#43;文件后缀即可直接下载。
+把图片链接弄在Markdown中直接部署。
+这样就可以实现托管在GithubIO的博客秒开啦～
+图床的工具 uPic uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。
+图床的思考 本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。
+让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。
+程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/posts/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "关于图床",
+      "item": "/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "关于图床",
+  "name": "关于图床",
+  "description": "什么是图床？ 图床（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。\n什么情况需要用图床？ 图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。\n我自己的案例 我搭建了一个博客 http://nagisa77.github.io/ ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。\n此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。\n腾讯云 COS 图片的上传和下载 上传\n对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。\n下载\n下载只要用访问域名+文件后缀即可直接下载。\n把图片链接弄在Markdown中直接部署。\n这样就可以实现托管在GithubIO的博客秒开啦～\n图床的工具 uPic uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。\n图床的思考 本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。\n让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。\n程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？",
+  "keywords": [
+    
+  ],
+  "articleBody": "什么是图床？ 图床（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。\n什么情况需要用图床？ 图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。\n我自己的案例 我搭建了一个博客 http://nagisa77.github.io/ ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。\n此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。\n腾讯云 COS 图片的上传和下载 上传\n对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。\n下载\n下载只要用访问域名+文件后缀即可直接下载。\n把图片链接弄在Markdown中直接部署。\n这样就可以实现托管在GithubIO的博客秒开啦～\n图床的工具 uPic uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。\n图床的思考 本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。\n让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。\n程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？\n",
+  "wordCount" : "37",
+  "inLanguage": "en",
+  "datePublished": "2024-08-29T22:07:12+08:00",
+  "dateModified": "2024-08-29T22:07:12+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tim's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Tim&#39;s Blog (Alt + H)">
+                <img src="/logo.png" alt="" aria-label="logo"
+                    height="35">Tim&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      关于图床
+    </h1>
+    <div class="post-meta"><span title='2024-08-29 22:07:12 +0800 CST'>August 29, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h3 id="什么是图床">什么是图床？<a hidden class="anchor" aria-hidden="true" href="#什么是图床">#</a></h3>
+<p><strong>图床</strong>（Image Hosting Service）是指专门用于存储和管理图片的在线服务。用户可以将图片上传到图床，然后获取一个图片的外链 URL，这个 URL 可以嵌入到其他网页、博客、社交媒体、论坛等地方，用于展示图片而不需要将图片文件直接保存在这些平台上。</p>
+<h3 id="什么情况需要用图床">什么情况需要用图床？<a hidden class="anchor" aria-hidden="true" href="#什么情况需要用图床">#</a></h3>
+<p>图床是专门用于存储和管理图片的在线服务，用户可以将图片上传到图床，然后获取图片的外链 URL，用于在其他网页、博客、社交媒体等地方展示图片。使用图床可以减少网站服务器的负担，因为图片存储在图床服务提供商的服务器上，减少了你自己服务器的存储空间和带宽消耗，从而提升网站的加载速度和性能。优质的图床通常使用内容分发网络（CDN），能够在全球范围内快速加载图片，提升用户体验。当你需要在多个平台上共享和分发同一张图片时，图床提供的外链 URL 可以方便地实现跨平台展示，而无需重复上传图片。此外，图床还可以作为图片的存档和备份方式，确保图片在原始存储位置出现问题时不会丢失。</p>
+<h3 id="我自己的案例">我自己的案例<a hidden class="anchor" aria-hidden="true" href="#我自己的案例">#</a></h3>
+<p>我搭建了一个博客 <a href="http://nagisa77.github.io/">http://nagisa77.github.io/</a> ，但是由于GitHub.io 下载速率的限制，我把图片都部署到GitHub上面了，加载奇慢，严重影响体验；之后选择腾讯云COS作为图床，效果就好非常多了，虽然页面数据搭载在GitHubio，但是图片在腾讯云，可以做到秒开。</p>
+<p>此外我还想之后做自己的网站，也可以利用这个图床去做（10元/年）。费用还行。</p>
+<p><img loading="lazy" src="https://blog-1307107697.cos.ap-shanghai.myqcloud.com/%e5%85%b3%e4%ba%8e%e5%9b%be%e5%ba%8a%e7%9a%84%e6%8e%a2%e7%a9%b6.png" alt="关于图床的探究"  />
+</p>
+<h4 id="腾讯云-cos-图片的上传和下载">腾讯云 COS 图片的上传和下载<a hidden class="anchor" aria-hidden="true" href="#腾讯云-cos-图片的上传和下载">#</a></h4>
+<ul>
+<li>
+<p><strong>上传</strong></p>
+<p><img loading="lazy" src="https://blog-1307107697.cos.ap-shanghai.myqcloud.com/%e5%85%b3%e4%ba%8e%e5%9b%be%e5%ba%8a%e7%9a%84%e6%8e%a2%e7%a9%b6-1.png" alt="关于图床的探究-1"  />
+</p>
+<p>对于博客场景，因为是“大家都可以访问我的博客”，也可以直接设置成公有读私有写。</p>
+<p><img loading="lazy" src="https://blog-1307107697.cos.ap-shanghai.myqcloud.com/%e5%85%b3%e4%ba%8e%e5%9b%be%e5%ba%8a%e7%9a%84%e6%8e%a2%e7%a9%b6-2.png" alt="关于图床的探究-2"  />
+</p>
+</li>
+<li>
+<p><strong>下载</strong></p>
+<p>下载只要用访问域名+文件后缀即可直接下载。</p>
+<p><img loading="lazy" src="https://blog-1307107697.cos.ap-shanghai.myqcloud.com/%e5%85%b3%e4%ba%8e%e5%9b%be%e5%ba%8a%e7%9a%84%e6%8e%a2%e7%a9%b6-3.png" alt="关于图床的探究-3"  />
+</p>
+<p>把图片链接弄在Markdown中直接部署。</p>
+<p><img loading="lazy" src="https://blog-1307107697.cos.ap-shanghai.myqcloud.com/%e5%85%b3%e4%ba%8e%e5%9b%be%e5%ba%8a%e7%9a%84%e6%8e%a2%e7%a9%b6-4.png" alt="关于图床的探究-4"  />
+</p>
+<p>这样就可以实现托管在GithubIO的博客秒开啦～</p>
+</li>
+</ul>
+<h3 id="图床的工具-upic">图床的工具 uPic<a hidden class="anchor" aria-hidden="true" href="#图床的工具-upic">#</a></h3>
+<p>uPic 可以实现绑定认证后，在本地上传图片，而无需打开网页。</p>
+<h3 id="图床的思考">图床的思考<a hidden class="anchor" aria-hidden="true" href="#图床的思考">#</a></h3>
+<p>本质是一种解耦的思维。作为开发者最忌讳的是重复造轮子；比如我完全可以写一套代码，部署在自己服务器上，实现图片的增删查改；但是不如每个月0.8元，让腾讯云托管我的服务；另外如果我的服务器部署了自己手写的“类图床”，也会吃到下行流量，其次就还有性能方面瓶颈。</p>
+<p>让我想到微信小程序的一些设施 — 云函数、云存储等等，其实都是如此。开发者只要提交逻辑，后台服务的繁琐部署都免去了，这也是一种解耦的思维的实践。你只要交19元/月，省去大量配置成本。</p>
+<p>程序员本质是搬砖，但是践行着“少写代码多思考”的主题思维，又会不知不觉间想开通各种云服务，本质想要“用钱买重复劳动力”。这像是一种有趣的悖论，所以有没有可能把业务逻辑外包给大学生写是更好的选择？</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="/">Tim&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
