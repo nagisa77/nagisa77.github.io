@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>VPS 服务器搭建 — ChatGPT中转站 | Tim&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。
@@ -19,16 +19,16 @@ curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状�
 购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。
 购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址：">
 <meta name="author" content="">
-<link rel="canonical" href="//localhost:1313/posts/vps/">
+<link rel="canonical" href="/posts/vps/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="//localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="//localhost:1313/posts/vps/">
+<link rel="alternate" hreflang="en" href="/posts/vps/">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,6 +66,89 @@ curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状�
 
     </style>
 </noscript>
+  
+
+<meta property="og:title" content="VPS 服务器搭建 — ChatGPT中转站" />
+<meta property="og:description" content="在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。
+购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。
+云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：
+❯ vim ~/.ssh/authorized_keys 将本机的 ~/.ssh/id_rsa.pub 内容添加到此文件中即可。
+测试对于 OpenAI 的可访问性 测试从你的 VPS 服务器是否可以访问 OpenAI 的 ChatGPT 服务。以 Safari 浏览器为例，使用快捷键 ⌥&#43;⌘&#43;u 访问 https://chat.openai.com。
+可以看到无法直接访问。我们可以使用 curl 工具进行进一步测试：
+curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状态。
+在香港服务器中，执行 curl 命令后需要输出 binary，可以看到确实有响应。为进一步验证响应内容，在命令后添加 --output -：
+结果表明响应是 OK 的。
+购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。
+购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/vps/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-29T17:31:48+08:00" />
+<meta property="article:modified_time" content="2024-08-29T17:31:48+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VPS 服务器搭建 — ChatGPT中转站"/>
+<meta name="twitter:description" content="在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。
+购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。
+云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：
+❯ vim ~/.ssh/authorized_keys 将本机的 ~/.ssh/id_rsa.pub 内容添加到此文件中即可。
+测试对于 OpenAI 的可访问性 测试从你的 VPS 服务器是否可以访问 OpenAI 的 ChatGPT 服务。以 Safari 浏览器为例，使用快捷键 ⌥&#43;⌘&#43;u 访问 https://chat.openai.com。
+可以看到无法直接访问。我们可以使用 curl 工具进行进一步测试：
+curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状态。
+在香港服务器中，执行 curl 命令后需要输出 binary，可以看到确实有响应。为进一步验证响应内容，在命令后添加 --output -：
+结果表明响应是 OK 的。
+购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。
+购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址："/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/posts/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "VPS 服务器搭建 — ChatGPT中转站",
+      "item": "/posts/vps/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "VPS 服务器搭建 — ChatGPT中转站",
+  "name": "VPS 服务器搭建 — ChatGPT中转站",
+  "description": "在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。\n购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。\n云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：\n❯ vim ~/.ssh/authorized_keys 将本机的 ~/.ssh/id_rsa.pub 内容添加到此文件中即可。\n测试对于 OpenAI 的可访问性 测试从你的 VPS 服务器是否可以访问 OpenAI 的 ChatGPT 服务。以 Safari 浏览器为例，使用快捷键 ⌥+⌘+u 访问 https://chat.openai.com。\n可以看到无法直接访问。我们可以使用 curl 工具进行进一步测试：\ncurl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状态。\n在香港服务器中，执行 curl 命令后需要输出 binary，可以看到确实有响应。为进一步验证响应内容，在命令后添加 --output -：\n结果表明响应是 OK 的。\n购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。\n购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址：",
+  "keywords": [
+    
+  ],
+  "articleBody": "在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。\n购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。\n云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：\n❯ vim ~/.ssh/authorized_keys 将本机的 ~/.ssh/id_rsa.pub 内容添加到此文件中即可。\n测试对于 OpenAI 的可访问性 测试从你的 VPS 服务器是否可以访问 OpenAI 的 ChatGPT 服务。以 Safari 浏览器为例，使用快捷键 ⌥+⌘+u 访问 https://chat.openai.com。\n可以看到无法直接访问。我们可以使用 curl 工具进行进一步测试：\ncurl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状态。\n在香港服务器中，执行 curl 命令后需要输出 binary，可以看到确实有响应。为进一步验证响应内容，在命令后添加 --output -：\n结果表明响应是 OK 的。\n购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。\n购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址：\n过一段时间后，使用 ping 命令验证解析是否正确：\n如果解析正确，那么你的域名已经成功指向了 VPS 服务器。\n正式搭建 在此步骤中，我们将开始安装和配置服务器上的必要工具和软件。\n启用 BBR TCP 拥塞控制算法 为了优化网络性能，我们将启用 BBR TCP 拥塞控制算法：\n编辑 /etc/sysctl.conf 文件，添加以下两行：\nnet.core.default_qdisc=fq net.ipv4.tcp_congestion_control=bbr 然后运行以下命令：\n❯ sudo sysctl -p 安装 Nginx Nginx 是一个高效的反向代理服务器和 Web 服务器，我们需要安装它来处理流量：\n❯ sudo apt install nginx 安装 acme.sh acme.sh 是一个自动化的证书管理工具，我们将使用它来申请并管理 SSL 证书：\n❯ curl https://get.acme.sh | sh 然后添加一个软链接以方便使用：\n❯ sudo ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh ❯ source ~/.bashrc 切换 CA 机构到 Let’s Encrypt：\n❯ acme.sh --set-default-ca --server letsencrypt 申请 SSL 证书：\n❯ acme.sh --issue -d 你的域名 -k ec-256 --webroot /var/www/html 安装 SSL 证书：\n❯ acme.sh --install-cert -d 你的域名 --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt --reloadcmd \"systemctl force-reload nginx\" 安装 x-ui x-ui 是一个功能强大的图形界面工具，用于管理和配置代理服务器：\n❯ bash \u003c(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh) 寻找「伪装」站点，防止 GFW 检测 为了避免服务器 IP 被 GFW（防火长城）检测并封禁，我们需要设置伪装站点。这一步非常重要。可以通过 Google 搜索相关站点，例如：\n❯ intext:登录 Cloudreve 找到这个站点：http://www.leftblogs.ml\n配置 X-ui 最后一步是配置 Nginx 和 X-ui，使其能够正确处理流量并提供伪装功能。替换 VPS 上的 /etc/nginx/nginx.conf 文件内容为以下配置：\nuser www-data; worker_processes auto; pid /run/nginx.pid; include /etc/nginx/modules-enabled/*.conf; events { worker_connections 1024; } http { sendfile on; tcp_nopush on; tcp_nodelay on; keepalive_timeout 65; types_hash_max_size 2048; include /etc/nginx/mime.types; default_type application/octet-stream; gzip on; server { listen 443 ssl; server_name nicename.co; # 你的域名 ssl_certificate /etc/x-ui/server.crt; # 证书位置 ssl_certificate_key /etc/x-ui/server.key; # 私钥位置 ssl_session_timeout 1d; ssl_session_cache shared:MozSSL:10m; ssl_session_tickets off; ssl_protocols TLSv1.2 TLSv1.3; ssl_prefer_server_ciphers off; location / { proxy_pass https://bing.com; # 伪装网址 proxy_redirect off; proxy_ssl_server_name on; sub_filter_once off; sub_filter \"bing.com\" $server_name; proxy_set_header Host \"bing.com\"; proxy_set_header Referer $http_referer; proxy_set_header X-Real-IP $remote_addr; proxy_set_header User-Agent $http_user_agent; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto https; proxy_set_header Accept-Encoding \"\"; proxy_set_header Accept-Language \"zh-CN\"; } location /ray { # 分流路径 proxy_redirect off; proxy_pass http://127.0.0.1:10000; # Xray 端口 proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection \"upgrade\"; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } location /xui { # xui 路径 proxy_redirect off; proxy_pass http://127.0.0.1:9999; # xui 监听端口 proxy_http_version 1.1; proxy_set_header Host $host; } } server { listen 80; location /.well-known/ { root /var/www/html; } location / { rewrite ^(.*)$ https://$host$1 permanent; } } } 在域名和 x-ui 端口号中配置端口映射。\n重新加载 Nginx 配置文件：\n❯ systemctl reload nginx 然后访问以下地址进行配置：\nhttps://nagisa10086.top/a9937e29-6197-450d-fe08-002ee2182da1-xui/xui/ 后续进展：发现腾讯香港服务器已经被 GPT 拉黑了，计划更换为亚马逊服务器继续搭建。\n通过以上步骤，你将成功搭建一个 VPS 服务器并将其配置为 ChatGPT 中转站。未来你可以继续根据需要进行调整和优化，确保服务器的稳定性和安全性。\n",
+  "wordCount" : "390",
+  "inLanguage": "en",
+  "datePublished": "2024-08-29T17:31:48+08:00",
+  "dateModified": "2024-08-29T17:31:48+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/posts/vps/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tim's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -83,8 +166,8 @@ curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状�
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="//localhost:1313/" accesskey="h" title="Tim&#39;s Blog (Alt + H)">
-                <img src="//localhost:1313/logo.png" alt="" aria-label="logo"
+            <a href="/" accesskey="h" title="Tim&#39;s Blog (Alt + H)">
+                <img src="/logo.png" alt="" aria-label="logo"
                     height="35">Tim&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
@@ -290,7 +373,7 @@ curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状�
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="//localhost:1313/">Tim&#39;s Blog</a></span> · 
+        <span>&copy; 2024 <a href="/">Tim&#39;s Blog</a></span> · 
 
     <span>
         Powered by
