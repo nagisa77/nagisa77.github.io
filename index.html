@@ -162,6 +162,28 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">VPS 服务器搭建 — ChatGPT中转站
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。
+购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。
+云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：
+❯ vim ~/.ssh/authorized_keys 将本机的 ~/.ssh/id_rsa.pub 内容添加到此文件中即可。
+测试对于 OpenAI 的可访问性 测试从你的 VPS 服务器是否可以访问 OpenAI 的 ChatGPT 服务。以 Safari 浏览器为例，使用快捷键 ⌥&#43;⌘&#43;u 访问 https://chat.openai.com。
+可以看到无法直接访问。我们可以使用 curl 工具进行进一步测试：
+curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状态。
+在香港服务器中，执行 curl 命令后需要输出 binary，可以看到确实有响应。为进一步验证响应内容，在命令后添加 --output -：
+结果表明响应是 OK 的。
+购买域名，将域名和 VPS 地址绑定 接下来，我们需要为你的 VPS 服务器购买一个域名，并将其绑定到服务器的 IP 地址。你可以在 NameSilo 购买域名。
+购买完成后，配置域名的 DNS 解析，将其指向 VPS 的 IP 地址：...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-08-29 17:31:48 +0800 CST'>August 29, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to VPS 服务器搭建 — ChatGPT中转站" href="/posts/vps/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Why Blogs?
     </h2>
   </header>
