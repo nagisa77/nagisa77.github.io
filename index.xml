@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tim&#39;s Blog</title>
-    <link>/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content on Tim&#39;s Blog</description>
     <generator>Hugo -- 0.133.1</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Aug 2024 17:31:48 +0800</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IDEA破解</title>
-      <link>/posts/idea-%E7%A0%B4%E8%A7%A3/</link>
+      <link>//localhost:1313/posts/idea-%E7%A0%B4%E8%A7%A3/</link>
       <pubDate>Thu, 29 Aug 2024 17:31:48 +0800</pubDate>
-      <guid>/posts/idea-%E7%A0%B4%E8%A7%A3/</guid>
+      <guid>//localhost:1313/posts/idea-%E7%A0%B4%E8%A7%A3/</guid>
       <description>IDEA 破解 查看原文
 1. 下载 IDEA 下载链接
 2. 脚本 下载脚本：百度网盘链接 提取码: m494</description>
     </item>
     <item>
       <title>VPS 服务器搭建 — ChatGPT中转站</title>
-      <link>/posts/vps/</link>
+      <link>//localhost:1313/posts/vps/</link>
       <pubDate>Thu, 29 Aug 2024 17:31:48 +0800</pubDate>
-      <guid>/posts/vps/</guid>
+      <guid>//localhost:1313/posts/vps/</guid>
       <description>在本教程中，我们将详细介绍如何在 VPS 服务器上搭建一个中转站，用于绕过网络限制访问 OpenAI 的 ChatGPT 服务。我们会一步步进行从购买服务器到配置域名、安装必要的软件和工具，以及最后的伪装配置，以确保你的服务器能够稳定且安全地运行。
 购买一台云服务器(香港) 首先，我们需要购买一台位于香港的云服务器（步骤省略）。
 云服务器里边配置 SSH Key，方便后续使用 为了便于日后的登录操作，我们需要配置 SSH Key 认证：
@@ -36,9 +36,9 @@ curl https://chat.openai.com 在 macOS 终端中测试时，表现为卡死状�
     </item>
     <item>
       <title>Why Blogs?</title>
-      <link>/posts/why-blogs/</link>
+      <link>//localhost:1313/posts/why-blogs/</link>
       <pubDate>Thu, 29 Aug 2024 14:12:15 +0800</pubDate>
-      <guid>/posts/why-blogs/</guid>
+      <guid>//localhost:1313/posts/why-blogs/</guid>
       <description>为什么我要搭建个人博客 作为一名刚毕业两年的程序员，我觉得有一个个人博客是个不错的主意。首先，这是我在数字世界里展示自己的方式之一。要在这个信息泛滥的时代脱颖而出，让别人迅速了解你，一个博客链接无疑是最快捷的途径。它可以是我的线上名片，不论是求职还是与同行交流，丢个链接过去，别人就能一览我的想法和技术积累。
 其次，搭建博客也是我提升技术的好机会。通过这个项目，我可以实践全栈开发，从前端的美化设计，到后端的逻辑实现，甚至服务器的部署与优化，每一步都能帮助我更深入地理解技术。未来，我打算重构这个博客，让它真正成为我个人风格的代表作品。毕竟，自己设计、自己开发、自己部署的东西，最能体现个人的能力和审美。
 当然，博客还承载着我成长和思考的记录。工作中的一些问题、解决问题的过程、对新技术的探索，这些都是值得记下来的东西。通过写博客，我可以更系统地整理这些思考，回头看的时候，也能感受到自己的成长和进步。
