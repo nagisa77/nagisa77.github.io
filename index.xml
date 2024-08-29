@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tim&#39;s Blog</title>
-    <link>http://example.org/</link>
+    <link>/</link>
     <description>Recent content on Tim&#39;s Blog</description>
     <generator>Hugo -- 0.133.1</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Aug 2024 14:12:15 +0800</lastBuildDate>
-    <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why Blogs?</title>
-      <link>http://example.org/posts/why-blogs/</link>
+      <link>/posts/why-blogs/</link>
       <pubDate>Thu, 29 Aug 2024 14:12:15 +0800</pubDate>
-      <guid>http://example.org/posts/why-blogs/</guid>
+      <guid>/posts/why-blogs/</guid>
       <description>为什么要做一个个人博客 为什么要做一个个人博客。博主是一个毕业两年的程序员，我觉得搭建博客有以下主要原因。 首先我需要搭建个人数字形象，如何在互联网上介绍自己？甩一个博客链接无非是最简单的方式；其次为了学习全栈开发、设计理念、前端知识，之后会重构我的博客，变成我自己设计的版本。
 上班过程书写，潦草几句作为第一个博客 :) 以后会分享更多内容</description>
     </item>
