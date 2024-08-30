@@ -6,8 +6,25 @@
     <description>Recent content in Posts on Tim&#39;s Blog</description>
     <generator>Hugo -- 0.133.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Aug 2024 22:07:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2024 11:50:24 +0800</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JWT的原理和思考</title>
+      <link>/posts/jwt%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E6%80%9D%E8%80%83/</link>
+      <pubDate>Fri, 30 Aug 2024 11:50:24 +0800</pubDate>
+      <guid>/posts/jwt%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E6%80%9D%E8%80%83/</guid>
+      <description>JWT 是啥？ JWT（JSON Web Token）是一种用于在各方之间作为 JSON 对象安全传输信息的开放标准（RFC 7519）。该信息可以被验证和信任，因为它是经过数字签名的。JWT 通常用于身份验证和信息交换。
+JWT 由三部分组成，通常以点 (.) 分隔：
+Header（头部）：描述签名的算法和类型，通常使用的是 HMAC SHA256。 Payload（负载）：包含声明（claims），这部分是实际的传输数据，可以包括用户身份信息、权限、过期时间等。 Signature（签名）：用于验证消息是否未被篡改。它是通过将头部和负载组合在一起，使用指定的签名算法（如 HMAC SHA256）以及一个密钥生成的。 JWT 的基本格式如下：
+xxxxx.yyyyy.zzzzz JWT 的加密流程 JWT 的一个显著特点是“自包含”，也就是说 JWT 本身包含了所有的信息，无需服务器存储状态，服务器只负责每一次的验证。这样服务器就无需存储客户端状态（如登录状态、过期时间等）。
+登录时，服务端会根据用户登录信息和时间戳，返回给客户端一个 JWT token。
+前端登录成功后，会将 token 存储在 localStorage 中。
+有什么优点？ 之后的 API 调用中，可以不再传递用户信息。通过前端 Hook 和后端 Hook，自动实施鉴权和重定向。
+前端可以设置全局请求拦截器，将 JWT token 添加到请求头中。
+这样一来，登录模块的权限检查可以独立于具体业务进行鉴权；前端也不再需要在业务代码中传递用户信息，从而提高了代码的可维护性。
+其他的做法：Session + Cookie 在这种方式中，状态存储在服务端。服务器在用户登录时创建一个会话（Session），并将会话 ID 存储在服务器端（通常在内存或数据库中）。服务器会将会话 ID 通过 cookie 发送到客户端，客户端每次请求时会自动携带这个 cookie。服务器通过会话 ID 查找和验证会话数据，以确定用户身份。与 JWT 不同的是，部分信息存在服务端，没有“自包含”的特点。
+其他的做法：OAuth 2.0 Google 登录是 OAuth 2.0 的具体实现，通过 OAuth 2.</description>
+    </item>
     <item>
       <title>关于图床</title>
       <link>/posts/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%BA%8A/</link>
