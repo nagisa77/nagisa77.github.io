@@ -6,8 +6,48 @@
     <description>Recent content in Posts on Tim&#39;s Blog</description>
     <generator>Hugo -- 0.133.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2024 11:50:24 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2024 15:47:07 +0800</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What Happened to Spotify? 翻译搬运</title>
+      <link>/posts/whats-happened-to-spotify/</link>
+      <pubDate>Tue, 03 Sep 2024 15:47:07 +0800</pubDate>
+      <guid>/posts/whats-happened-to-spotify/</guid>
+      <description>回声室、利润与自2017年以来艺术家发现的衰退 Rosie Hoggmascall
+在 growthdives.com 免费阅读 🕺
+时不时地，我会留意工作时背景中播放的音乐。我开始感到不满。
+这些歌曲我已经听了成百上千遍。
+我打开应用，点击暂停，然后尝试寻找其他音乐。
+但很难找到我想听的东西。
+所以我懒得去找，总是听相同的 深度工作播放列表，希望它偶尔能更新。
+这种潜藏的挫败感已经酝酿了几个月。而且我花了一段时间才意识到。
+直到我读到 为什么我终于放弃了Spotify 的文章，由我的朋友Ben分享，作者是 Kyle Chayka 。
+然后一切都明白了。
+我意识到：
+我陷入了一个深度回声室 我找不到我想听的歌曲或播客 我经常迷失在复杂的界面中 最终，我正在失去与我喜欢的艺术家的联系，音乐品味也停滞不前 ⠀但是为什么呢？
+很显然，轻松听到好音乐是Spotify的核心价值主张吧？显然他们正在朝这个方向努力？
+……
+为了试图解开我的回声室以及缺乏新曲目的困扰，我回溯到2017年，研究了首页的结构如何帮助我们发现音乐，以及这些年来的变化。
+我们将探讨Spotify的UI、UX以及整体商业战略，以弄清他们为什么似乎在优化某些正在削弱核心用户体验的东西。
+首先，让我们来看一些商业背景，帮助我们理解为什么Spotify可能在UI中更加突出某些部分（咳咳 播客 咳咳）。
+Spotify艰难的盈利之旅 🥴 我在去年11月（2023年）撰写了Spotify重返盈利 的文章。这是自2021年以来音乐流媒体服务首次报告盈利。
+去年全年，它裁减了17%的员工 和大量的市场营销支出。
+它还提高了价格。多年来，Spotify的月订阅费一直是9.99美元，直到2023年7月，主要市场的价格上涨了1美元](https://www.theverge.com/2023/7/24/23805364/spotify-us-price-increase-10-99-a-month-9-99-month-twelve-years)。在2024年，他们再次将价格提高了1美元。
+Spotify 价格上涨邮件（来源: The Verge）
+这些成本削减和价格上涨确实产生了影响，Spotify的第二季度财报 表示：
+得益于健康的订阅者增长、货币化的改善以及创纪录的盈利，Spotify报告…
+月活跃用户 同比增长14%，达到6.26亿
+订阅者 同比增长12%，达到2.46亿
+总收入 同比增长20%，达到38亿欧元
+毛利率 达到29.2%
+对于那些不太关注商业的人来说，这里有几个非常 有趣 的点👀：
+1 月活跃用户增长比订阅者多，表明从免费到付费的转换率在下降
+2 总收入增长比订阅者多，表明价格上涨推动了每用户平均收入（ARPU）的增长。也就是说，ARPU的增长几乎和订阅者增长一样驱动了盈利
+3 毛利率比去年提高了约5%。这是因为Spotify的播客业务成本降低**，**比如减少了播客独家授权的支出（例如不再花大钱让人们像乔·罗根那样只在一个平台上播出）。根据CEO Daniel Ek的说法：“播客业务去年还是拖累。现在它是我们的另一个利润中心。”
+这些数据表明，Spotify是一家更好的公司，但不一定是一个更好的产品。
+鉴于数字的普遍乐观，他们开始有点大手大脚了。
+CEO最近分享说，他们不会“在全年恢复一些市场营销支出……因为我们希望继续增长，我们发现，在某些地区，我们可能削减得太多了。” 他们还正在招聘67个职位，覆盖欧洲、亚洲和北美。</description>
+    </item>
     <item>
       <title>JWT的原理和思考</title>
       <link>/posts/jwt%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E6%80%9D%E8%80%83/</link>
